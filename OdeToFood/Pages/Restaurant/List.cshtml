@@ -1,0 +1,33 @@
+﻿@page
+@model OdeToFood.Pages.Restaurent.ListModel
+@{
+    ViewData["Title"] = "List";
+}
+<h1>Resturants</h1>
+<div>
+    <form method="get">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="search" class="form-control" asp-for="SearchTerm" />
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" value="Search" name="Search">
+                        Search<i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-page="./Edit" class="btn btn-primary">Add New</a>
+    @foreach (var restaurant in Model.Restaurants) {
+        <partial name="_Summary" model="restaurant" />
+    }
+</div>
+
+@section footer{
+    <div>
+        @Model.MessageFromAppSetting
+    </div>
+}
